@@ -139,7 +139,7 @@ if st.button("Predict"):
 
 	def airmass(zenang):
 	    if zenang < 89:
-		 return 1/(cos(zenang/(180/pi))+0.15/(93.885-zenang)**1.25)
+		return 1/(cos(zenang/(180/pi))+0.15/(93.885-zenang)**1.25)
 	    else:
 		return 0
 	ds['Air Mass'] = [airmass(zenang) for zenang in ds['Zenith Ang']]
