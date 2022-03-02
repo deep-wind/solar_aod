@@ -6,7 +6,7 @@ Created on Tue Mar  1 14:17:02 2022
 """
 from __future__ import division # ensures no rounding errors from division involving integers
 from math import * # enables use of pi, trig functions, and more.
-
+import streamlit as st
 import pandas as pd # gives us the dataframe concept
 pd.options.display.max_columns = 50
 pd.options.display.max_rows = 9
