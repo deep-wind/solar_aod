@@ -33,7 +33,7 @@ lon = hdf.select('Longitude')
 longitude = lon[:,:]
 min_lon=longitude.min()
 max_lon=longitude.max()
-		
+st.markdown("<h1 style ='color:green; text_align:center;font-family:times new roman;font-weight: bold;font-size:20pt;'>Impact of AOD on Solar Power </h1>", unsafe_allow_html=True)  		
 #get SDS
 try:
 	sds=hdf.select(SDS_NAME)
