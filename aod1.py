@@ -52,15 +52,15 @@ print('The range of latitude in this file is: ',min_lat,' to ',max_lat, 'degrees
 user_lat=st.text_input('\nPlease enter the latitude you would like to analyze (Deg. N): ')
 user_lon=st.text_input('Please enter the longitude you would like to analyze (Deg. E): ')
 if st.button("Predict"):
-        latitude_input=float(user_lat)
-        longitude_input=float(user_lon)
-        df_map = pd.DataFrame(
-         np.random.randn(1000, 2) / [50, 50] + [latitude_input,longitude_input],
-         columns=['lat', 'lon'])
-        st.markdown("<h1 style='text-align: left; font-weight:bold;color:black;background-color:white;font-size:11pt;'> Selected Location </h1>",unsafe_allow_html=True)
-    
-        st.map(df_map)
-        date=str(date)
+	latitude_input=float(user_lat)
+	longitude_input=float(user_lon)
+	df_map = pd.DataFrame(
+	 np.random.randn(1000, 2) / [50, 50] + [latitude_input,longitude_input],
+	 columns=['lat', 'lon'])
+	st.markdown("<h1 style='text-align: left; font-weight:bold;color:black;background-color:white;font-size:11pt;'> Selected Location </h1>",unsafe_allow_html=True)
+
+	st.map(df_map)
+	date=str(date)
 
 	#calculation to find nearest point in data to entered location (haversine formula)
 	R=6371000#radius of the earth in meters
