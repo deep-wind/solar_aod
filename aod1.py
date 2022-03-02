@@ -19,7 +19,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
 
-file_name=r"C:\Users\PRAMILA\.spyder-py3\project\sih\MYD04_L2.A2022051.0000.061.2022051163849.hdf"
+file_name="MYD04_L2.A2022051.0000.061.2022051163849.hdf"
 hdf=SD.SD(file_name)
 dataFields=dict([(1,'Deep_Blue_Aerosol_Optical_Depth_550_Land'),(2,'AOD_550_Dark_Target_Deep_Blue_Combined'),(3,'AOD_550_Dark_Target_Deep_Blue_Combined_QA_Flag')])
 SDS_NAME=dataFields[2] # The name of the sds to read
