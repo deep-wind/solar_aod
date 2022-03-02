@@ -52,7 +52,7 @@ print('The range of latitude in this file is: ',min_lat,' to ',max_lat, 'degrees
 user_lat=float(st.text_input('\nPlease enter the latitude you would like to analyze (Deg. N): '))
 user_lon=float(st.text_input('Please enter the longitude you would like to analyze (Deg. E): '))
 df_map = pd.DataFrame(
- np.random.randn(1000, 2) / [50, 50] + [latitude_input,longitude_input],
+ np.random.randn(1000, 2) / [50, 50] + [user_lat,user_lon],
  columns=['lat', 'lon'])
 st.markdown("<h1 style='text-align: left; font-weight:bold;color:black;background-color:white;font-size:11pt;'> Selected Location </h1>",unsafe_allow_html=True)
 
