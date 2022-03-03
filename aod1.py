@@ -250,4 +250,4 @@ min_index=ds['Direct Beam'].argmin()
 print(min_index)
 
 solar_irradiance=ds['Dif Hz'].mean()
-st.success("OUTPUT OF LIGHT ENERGY FROM THE SUN {} W/m2".format(round(solar_irradiance,2)))
+st.success("OUTPUT OF LIGHT ENERGY FROM THE SUN {} W/m2".format(round(solar_irradiance,4)))
