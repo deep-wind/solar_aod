@@ -57,7 +57,7 @@ if st.button("Predict"):
     user_lat=float(user_lat)
     user_lon=float(user_lon)
     df_map = pd.DataFrame(
-	 np.random.randn(1000, 2) / [50, 50] + [latitude_input,longitude_input],
+	 np.random.randn(1000, 2) / [50, 50] + [user_lat,user_lon],
     columns=['lat', 'lon'])
     st.map(df_map)
     #calculation to find nearest point in data to entered location (haversine formula)
