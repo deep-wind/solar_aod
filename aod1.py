@@ -56,6 +56,10 @@ user_lon=st.text_input('Please enter the longitude you would like to analyze (De
 if st.button("Predict"):
     user_lat=float(user_lat)
     user_lon=float(user_lon)
+    df_map = pd.DataFrame(
+	 np.random.randn(1000, 2) / [50, 50] + [latitude_input,longitude_input],
+    columns=['lat', 'lon'])
+    st.map(df_map)
     #calculation to find nearest point in data to entered location (haversine formula)
     R=6371000#radius of the earth in meters
     lat1=np.radians(user_lat)
