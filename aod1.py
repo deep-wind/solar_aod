@@ -18,7 +18,7 @@ import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
-
+st.markdown("<h1 style ='color:green; text_align:center;font-family:times new roman;font-weight: bold;font-size:20pt;'>Impact of Aerosols in Solar Power Generation </h1>", unsafe_allow_html=True)  
 file_name="MYD04_L2.A2022051.0000.061.2022051163849.hdf"
 hdf=SD.SD(file_name)
 dataFields=dict([(1,'Deep_Blue_Aerosol_Optical_Depth_550_Land'),(2,'AOD_550_Dark_Target_Deep_Blue_Combined'),(3,'AOD_550_Dark_Target_Deep_Blue_Combined_QA_Flag')])
