@@ -53,9 +53,11 @@ user_lat=st.text_input('\nPlease enter the latitude you would like to analyze (D
 user_lon=st.text_input('Please enter the longitude you would like to analyze (Deg. E): ')
 
 
-if(st.button("Predict")):
+try:
 	user_lat=float(user_lat)
 	user_lon=float(user_lon)
+except:
+	print("error")
 df_map = pd.DataFrame(
  np.random.randn(1000, 2) / [50, 50] + [user_lat,user_lon],
  columns=['lat', 'lon'])
