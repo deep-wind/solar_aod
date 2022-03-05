@@ -6,11 +6,11 @@ Created on Tue Mar  1 14:17:02 2022
 """
 from __future__ import division # ensures no rounding errors from division involving integers
 from math import * # enables use of pi, trig functions, and more.
-import streamlit as st
+
 import pandas as pd # gives us the dataframe concept
 pd.options.display.max_columns = 50
 pd.options.display.max_rows = 9
-
+import streamlit as st
 
 from pyhdf import SD
 import numpy as np
@@ -18,7 +18,7 @@ import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
-st.markdown("<h1 style ='color:black; text_align:center;font-family:times new roman;font-size:20pt; font-weight: bold;'>Impact of Aerosols on Solar Power Cost</h1>", unsafe_allow_html=True)
+
 file_name="MYD04_L2.A2022051.0000.061.2022051163849.hdf"
 hdf=SD.SD(file_name)
 dataFields=dict([(1,'Deep_Blue_Aerosol_Optical_Depth_550_Land'),(2,'AOD_550_Dark_Target_Deep_Blue_Combined'),(3,'AOD_550_Dark_Target_Deep_Blue_Combined_QA_Flag')])
@@ -49,21 +49,9 @@ fillvalue=attributes['_FillValue']
 data=sds.get()
 #Print the range of latitude and longitude found in the file, then ask for a lat and lon
 print('The range of latitude in this file is: ',min_lat,' to ',max_lat, 'degrees \nThe range of longitude in this file is: ',min_lon, ' to ',max_lon,' degrees')
-user_lat=st.text_input('\nPlease enter the latitude you would like to analyze (Deg. N): ')
-user_lon=st.text_input('Please enter the longitude you would like to analyze (Deg. E): ')
+user_lat=float(st.text_input('\nPlease enter the latitude you would like to analyze (Deg. N): '))
+user_lon=float(st.text_input('Please enter the longitude you would like to analyze (Deg. E): '))
 
-
-try:
-	user_lat=float(user_lat)
-	user_lon=float(user_lon)
-except:
-	print("error")
-df_map = pd.DataFrame(
- np.random.randn(1000, 2) / [50, 50] + [user_lat,user_lon],
- columns=['lat', 'lon'])
-st.markdown("<h1 style='text-align: left; font-weight:bold;color:black;background-color:white;font-size:11pt;'> Selected Location </h1>",unsafe_allow_html=True)
-
-st.map(df_map)
 #calculation to find nearest point in data to entered location (haversine formula)
 R=6371000#radius of the earth in meters
 lat1=np.radians(user_lat)
@@ -99,7 +87,7 @@ albedo = 0.2
 
 G_sc = 1367 # W/m^2
 std_mer = longitude-longitude%15+15 # This Standard Meridian calculation is only a guide!! 
-				    # Please double check this value for your location!
+                                    # Please double check this value for your location!
 
 ### Day of the Year Column
 
@@ -141,88 +129,88 @@ ds['Zenith Ang'] = [zen(dec, hr_ang) for dec, hr_ang in zip(ds['DEC'],ds['Hour A
 
 def airmass(zenang):
     if zenang < 89:
-	return 1/(cos(zenang/(180/pi))+0.15/(93.885-zenang)**1.25)
+        return 1/(cos(zenang/(180/pi))+0.15/(93.885-zenang)**1.25)
     else:
-	return 0
+        return 0
 ds['Air Mass'] = [airmass(zenang) for zenang in ds['Zenith Ang']]
 
 ### Intermediate Results
 
 def T_rayleigh(airmass):
     if airmass > 0:
-	return exp(-0.0903*(P_mb*airmass/1013)**0.84*(1+P_mb*airmass/1013-(P_mb*airmass/1013)**1.01))
+        return exp(-0.0903*(P_mb*airmass/1013)**0.84*(1+P_mb*airmass/1013-(P_mb*airmass/1013)**1.01))
     else:
-	return 0
+        return 0
 ds['T rayleigh'] = [T_rayleigh(airmass) for airmass in ds['Air Mass']]
 
 def T_ozone(airmass):
     if airmass > 0:
-	return 1-0.1611*(Ozone_cm*airmass)*(1+139.48*(Ozone_cm*airmass))**-0.3034-0.002715*(Ozone_cm*airmass)/(1+0.044*(Ozone_cm*airmass)+0.0003*(Ozone_cm*airmass)**2)
+        return 1-0.1611*(Ozone_cm*airmass)*(1+139.48*(Ozone_cm*airmass))**-0.3034-0.002715*(Ozone_cm*airmass)/(1+0.044*(Ozone_cm*airmass)+0.0003*(Ozone_cm*airmass)**2)
     else:
-	return 0
+        return 0
 ds['T ozone'] = [T_ozone(airmass) for airmass in ds['Air Mass']]
 
 def T_gasses(airmass):
     if airmass > 0:
-	return exp(-0.0127*(airmass*P_mb/1013)**0.26)
+        return exp(-0.0127*(airmass*P_mb/1013)**0.26)
     else:
-	return 0
+        return 0
 ds['T gases'] = [T_gasses(airmass) for airmass in ds['Air Mass']]
 
 def T_water(airmass):
     if airmass > 0:
-	return 1-2.4959*airmass*H20_cm/((1+79.034*H20_cm*airmass)**0.6828+6.385*H20_cm*airmass)
+        return 1-2.4959*airmass*H20_cm/((1+79.034*H20_cm*airmass)**0.6828+6.385*H20_cm*airmass)
     else:
-	return 0
+        return 0
 ds['T water'] = [T_water(airmass) for airmass in ds['Air Mass']]
 
 def T_aerosol(airmass):
     if airmass > 0:
-	return exp(-(Taua**0.873)*(1+Taua-Taua**0.7088)*airmass**0.9108)
+        return exp(-(Taua**0.873)*(1+Taua-Taua**0.7088)*airmass**0.9108)
     else:
-	return 0
+        return 0
 ds['T aerosol'] = [T_aerosol(airmass) for airmass in ds['Air Mass']]
 
 def taa(airmass, taerosol):
     if airmass > 0:
-	return 1-0.1*(1-airmass+airmass**1.06)*(1-taerosol)
+        return 1-0.1*(1-airmass+airmass**1.06)*(1-taerosol)
     else:
-	return 0
+        return 0
 ds['TAA'] = [taa(airmass, taerosol) for airmass, taerosol in zip(ds['Air Mass'],ds['T aerosol'])]
 
 def rs(airmass, taerosol, taa):
     if airmass > 0:
-	return 0.0685+(1-Ba)*(1-taerosol/taa)
+        return 0.0685+(1-Ba)*(1-taerosol/taa)
     else:
-	return 0
+        return 0
 ds['rs'] = [rs(airmass, taerosol, taa) for airmass, taerosol, taa in zip(ds['Air Mass'],ds['T aerosol'],ds['TAA'])]
 
 def Id(airmass, etr, taerosol, twater, tgases, tozone, trayleigh):
     if airmass > 0:
-	return 0.9662*etr*taerosol*twater*tgases*tozone*trayleigh
+        return 0.9662*etr*taerosol*twater*tgases*tozone*trayleigh
     else:
-	return 0
+        return 0
 ds['Id'] = [Id(airmass, etr, taerosol, twater, tgases, tozone, trayleigh) for airmass, etr, taerosol, twater, tgases, tozone, trayleigh in zip(ds['Air Mass'],ds['ETR'],ds['T aerosol'],ds['T water'],ds['T gases'],ds['T ozone'],ds['T rayleigh'])]
 
 def idnh(zenang, Id):
     if zenang < 90:
-	return Id*cos(zenang/(180/pi))
+        return Id*cos(zenang/(180/pi))
     else:
-	return 0
+        return 0
 ds['IdnH'] = [idnh(zenang, Id) for zenang, Id in zip(ds['Zenith Ang'],ds['Id'])]
 
 def ias(airmass, etr, zenang, tozone, tgases, twater, taa, trayleigh, taerosol):
     if airmass > 0:
-	return etr*cos(zenang/(180/pi))*0.79*tozone*tgases*twater*taa*(0.5*(1-trayleigh)+Ba*(1-(taerosol/taa)))/(1-airmass+(airmass)**1.02)
+        return etr*cos(zenang/(180/pi))*0.79*tozone*tgases*twater*taa*(0.5*(1-trayleigh)+Ba*(1-(taerosol/taa)))/(1-airmass+(airmass)**1.02)
     else:
-	return 0
+        return 0
 ds['Ias'] = [ias(airmass, etr, zenang, tozone, tgases, twater, taa, trayleigh, taerosol) for airmass, etr, zenang, tozone, tgases, twater, taa, trayleigh, taerosol in zip(ds['Air Mass'],ds['ETR'],ds['Zenith Ang'],ds['T ozone'],ds['T gases'],ds['T water'],ds['TAA'],ds['T rayleigh'],ds['T aerosol'])]
 
 def gh(airmass, idnh, ias, rs):
     if airmass > 0:
-	return (idnh+ias)/(1-albedo*rs)
+        return (idnh+ias)/(1-albedo*rs)
     else:
-	return 0
+        return 0
 ds['GH'] = [gh(airmass, idnh, ias, rs) for airmass, idnh, ias, rs in zip(ds['Air Mass'],ds['IdnH'],ds['Ias'],ds['rs'])]
 
 ### Decimal Time
@@ -257,4 +245,4 @@ min_index=ds['Direct Beam'].argmin()
 print(min_index)
 
 solar_irradiance=ds['Dif Hz'].mean()
-st.success("OUTPUT OF LIGHT ENERGY FROM THE SUN {} W/m2".format(round(solar_irradiance,4)))
+st.success("OUTPUT OF LIGHT ENERGY FROM THE SUN {} W/m2".format(round(solar_irradiance,2)))
