@@ -48,9 +48,9 @@ fillvalue=attributes['_FillValue']
 #get SDS data
 data=sds.get()
 #Print the range of latitude and longitude found in the file, then ask for a lat and lon
-st.write('The range of latitude in this file is: ',min_lat,' to ',max_lat, 'degrees \nThe range of longitude in this file is: ',min_lon, ' to ',max_lon,' degrees')
-user_lat=st.text_input('\nPlease enter the latitude you would like to analyze (Deg. N): ')
-user_lon=st.text_input('Please enter the longitude you would like to analyze (Deg. E): ')
+#st.write('The range of latitude in this file is: ',min_lat,' to ',max_lat, 'degrees \nThe range of longitude in this file is: ',min_lon, ' to ',max_lon,' degrees')
+user_lat=st.text_input('\nPlease enter the latitude (between 14.599766 to 35.4595 degrees) you would like to analyze (Deg. N): ')
+user_lon=st.text_input('Please enter the longitude (between -174.43806 to -147.60152 degrees) you would like to analyze (Deg. E): ')
 
 
 if st.button("Predict"):
