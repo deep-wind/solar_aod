@@ -256,6 +256,7 @@ if st.button("Predict"):
     solar_irradiance=ds['Dif Hz'].mean()
     st.success("OUTPUT OF LIGHT ENERGY FROM THE SUN {} W/m2".format(round(solar_irradiance,2)))
 	#1 Unit “kilowatt-hour (kWh)” Cost:₹9
-    st.warning("Electricity Cost per Day: ₹ {}".format(round((solar_irradiance*9*1)/1000,2)))
-    st.info("Electricity Cost per Month: ₹ {}".format(round((solar_irradiance*9*12),2)))
+    st.write("1 Unit Cost:₹9")
+    st.warning("Electricity Cost per Day: ₹ {}".format(round((solar_irradiance*9*24)/1000,2)))
+    st.info("Electricity Cost per Month: ₹ {}".format(round((solar_irradiance*9*720)/1000,2)))
 	
