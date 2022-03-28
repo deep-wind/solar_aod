@@ -1,6 +1,6 @@
 
 pip
-streamlit==0.73.1
+streamlit
 pandas
 keras
 tensorflow
