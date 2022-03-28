@@ -18,7 +18,7 @@ import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
-
+import base64
   
 st.markdown("<h1 style ='color:green; text_align:center;font-family:times new roman;font-weight: bold;font-size:20pt;'>Impact of Aerosols in Solar Power Generation </h1>", unsafe_allow_html=True)  
 file_name="MYD04_L2.A2022051.0000.061.2022051163849.hdf"
