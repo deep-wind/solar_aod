@@ -18,6 +18,7 @@ import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
+import base64
 # set background, use base64 to read local file
 def get_base64_of_bin_file(bin_file):
     """
