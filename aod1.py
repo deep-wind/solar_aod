@@ -5,11 +5,6 @@ Created on Tue Mar  1 14:17:02 2022
 @author: PRAMILA
 """
 import streamlit as st
-from __future__ import division # ensures no rounding errors from division involving integers
-from math import * # enables use of pi, trig functions, and more.
-import pandas as pd # gives us the dataframe concept
-pd.options.display.max_columns = 50
-pd.options.display.max_rows = 9
 
 from pyhdf import SD
 import numpy as np
