@@ -1,5 +1,4 @@
 streamlit
-conda create --name streamlit-test python=3.8
 pandas
 keras
 tensorflow
