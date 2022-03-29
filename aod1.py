@@ -86,7 +86,7 @@ data=sds.get()
 st.markdown("<h5 style ='color:white; text_align:center;font-family:times new roman;font-weight: bold;font-size:12pt;'>Please enter the latitude (between 14.599766 to 35.4595 degrees) you would like to analyze (Deg. N):  </h5>", unsafe_allow_html=True)  
 user_lat=st.text_input('.')
 st.markdown("<h5 style ='color:white; text_align:center;font-family:times new roman;font-weight: bold;font-size:12pt;'>Please enter the longitude (between -174.43806 to -147.60152 degrees) you would like to analyze (Deg. E): </h5>", unsafe_allow_html=True)  
-user_lon=st.text_input('.')
+user_lon=st.text_input('..')
 
 
 if st.button("Predict"):
