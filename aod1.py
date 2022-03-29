@@ -114,7 +114,7 @@ if st.button("Predict"):
         	#st.write('The value of ',SDS_NAME,'at this pixel is',fillvalue,',(No Value)\n')
         	AOD500nm=fillvalue
     else:
-        	st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:orange;font-size:11pt;'> The value of {SDS_NAME} at this pixel is <mark style="background-color:powderblue">{round(data[x,y]*scale_factor,3)}</mark> (No Value) </h1>""",unsafe_allow_html=True)
+        	st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:orange;font-size:11pt;'> The value of {SDS_NAME} at this pixel is <mark style="background-color:powderblue">{round(data[x,y]*scale_factor,3)}</mark> </h1>""",unsafe_allow_html=True)
         	#st.write('The value of ', SDS_NAME,'at this pixel is ',round(data[x,y]*scale_factor,3))
         	AOD500nm=round(data[x,y]*scale_factor,3)
 
@@ -292,9 +292,12 @@ if st.button("Predict"):
     print(min_index)
     
     solar_irradiance=ds['Dif Hz'].mean()
+    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:lightgreen;font-size:11pt;'>OUTPUT OF LIGHT ENERGY FROM THE SUN {format(round(solar_irradiance,2)} W/m2 </h1>""",unsafe_allow_html=True)
     st.success("OUTPUT OF LIGHT ENERGY FROM THE SUN {} W/m2".format(round(solar_irradiance,2)))
 	#1 Unit “kilowatt-hour (kWh)” Cost:₹9
     st.write("1 Unit Cost:₹9")
+    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:lightgreen;font-size:11pt;'>Electricity Cost per Day: ₹ {format(round((solar_irradiance*9*24)/1000,2))} </h1>""",unsafe_allow_html=True)
     st.warning("Electricity Cost per Day: ₹ {}".format(round((solar_irradiance*9*24)/1000,2)))
+    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:lightgreen;font-size:11pt;'>Electricity Cost per Month: ₹ {format(round((solar_irradiance*9*720)/1000,2))} </h1>""",unsafe_allow_html=True)
     st.info("Electricity Cost per Month: ₹ {}".format(round((solar_irradiance*9*720)/1000,2)))
 	
