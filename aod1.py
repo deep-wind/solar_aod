@@ -51,7 +51,7 @@ def set_png_as_page_bg(png_file):
 
 set_png_as_page_bg('solar3.gif')
   
-st.markdown("<h1 style ='color:DarkBlue; text_align:center;font-family:times new roman;font-weight: bold;font-size:20pt;'>Impact of Aerosols in Solar Power Generation </h1>", unsafe_allow_html=True)  
+st.markdown("<h1 style ='color:DarkGreen; text_align:center;font-family:times new roman;font-weight: bold;font-size:20pt;'>Impact of Aerosols in Solar Power Generation </h1>", unsafe_allow_html=True)  
 
 file_name="MYD04_L2.A2022051.0000.061.2022051163849.hdf"
 hdf=SD.SD(file_name)
@@ -83,9 +83,9 @@ fillvalue=attributes['_FillValue']
 data=sds.get()
 #Print the range of latitude and longitude found in the file, then ask for a lat and lon
 #st.write('The range of latitude in this file is: ',min_lat,' to ',max_lat, 'degrees \nThe range of longitude in this file is: ',min_lon, ' to ',max_lon,' degrees')
-st.markdown("<h5 style ='color:white; text_align:center;font-family:times new roman;font-weight: bold;font-size:12pt;'>Please enter the latitude (between 14.599766 to 35.4595 degrees) (Deg. N):  </h5>", unsafe_allow_html=True)  
+st.markdown("<h5 style ='color:darkblue; text_align:center;font-family:times new roman;font-weight: bold;font-size:10pt;'>Please enter the latitude (between 14.599766 to 35.4595 degrees) (Deg. N):  </h5>", unsafe_allow_html=True)  
 user_lat=st.text_input('.')
-st.markdown("<h5 style ='color:white; text_align:center;font-family:times new roman;font-weight: bold;font-size:12pt;'>Please enter the longitude (between -174.43806 to -147.60152 degrees) (Deg. E): </h5>", unsafe_allow_html=True)  
+st.markdown("<h5 style ='color:white; text_align:center;font-family:times new roman;font-weight: bold;font-size:10pt;'>Please enter the longitude (between -174.43806 to -147.60152 degrees) (Deg. E): </h5>", unsafe_allow_html=True)  
 user_lon=st.text_input(' ')
 
 
