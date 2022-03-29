@@ -298,6 +298,6 @@ if st.button("Predict"):
     st.write("1 Unit Cost:₹9")
     st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:yellow;font-size:11pt;'>Electricity Cost per Day: ₹ <mark style="background-color:white">{format(round((solar_irradiance*9*24)/1000,2))} </mark> </h1>""",unsafe_allow_html=True)
     #st.warning("Electricity Cost per Day: ₹ {}".format(round((solar_irradiance*9*24)/1000,2)))
-    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:blue;font-size:11pt;'>Electricity Cost per Month: ₹ <mark style="background-color:white">{format(round((solar_irradiance*9*720)/1000,2))}</mark> </h1>""",unsafe_allow_html=True)
+    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:pink;font-size:11pt;'>Electricity Cost per Month: ₹ <mark style="background-color:white">{format(round((solar_irradiance*9*720)/1000,2))}</mark> </h1>""",unsafe_allow_html=True)
     #st.info("Electricity Cost per Month: ₹ {}".format(round((solar_irradiance*9*720)/1000,2)))
 	
