@@ -12,6 +12,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
 import base64
+
+st.set_page_config(
+page_title="CAP Solar",
+page_icon="🔆☀️"
+)
 # set background, use base64 to read local file
 def get_base64_of_bin_file(bin_file):
     """
