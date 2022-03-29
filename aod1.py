@@ -292,7 +292,7 @@ if st.button("Predict"):
     print(min_index)
     
     solar_irradiance=ds['Dif Hz'].mean()
-    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:lightgreen;font-size:11pt;'>OUTPUT OF LIGHT ENERGY FROM THE SUN {format(round(solar_irradiance,2)} W/m2 </h1>""",unsafe_allow_html=True)
+    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:lightgreen;font-size:11pt;'>OUTPUT OF LIGHT ENERGY FROM THE SUN {format(round(solar_irradiance,2))} W/m2 </h1>""",unsafe_allow_html=True)
     st.success("OUTPUT OF LIGHT ENERGY FROM THE SUN {} W/m2".format(round(solar_irradiance,2)))
 	#1 Unit “kilowatt-hour (kWh)” Cost:₹9
     st.write("1 Unit Cost:₹9")
