@@ -49,7 +49,7 @@ def set_png_as_page_bg(png_file):
 
 
 
-set_png_as_page_bg('solar.gif')
+set_png_as_page_bg('solar11.gif')
   
 st.markdown("<h1 style ='color:green; text_align:center;font-family:times new roman;font-weight: bold;font-size:20pt;'>Impact of Aerosols in Solar Power Generation </h1>", unsafe_allow_html=True)  
 
