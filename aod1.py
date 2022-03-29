@@ -110,11 +110,12 @@ if st.button("Predict"):
     x,y=np.unravel_index(d.argmin(),d.shape)
     print('\nThe nearest pixel to your entered location is at: \nLatitude:',latitude[x,y],' Longitude:',longitude[x,y])
     if data[x,y]==fillvalue:
-        	st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:orange;font-size:11pt;'> The value of {SDS_NAME} at this pixel is <mark style="background-color:green">{fillvalue}</mark> (No Value) </h1>""",unsafe_allow_html=True)
+        	st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:orange;font-size:11pt;'> The value of {SDS_NAME} at this pixel is <mark style="background-color:powderblue">{fillvalue}</mark> (No Value) </h1>""",unsafe_allow_html=True)
         	#st.write('The value of ',SDS_NAME,'at this pixel is',fillvalue,',(No Value)\n')
         	AOD500nm=fillvalue
     else:
-        	st.write('The value of ', SDS_NAME,'at this pixel is ',round(data[x,y]*scale_factor,3))
+        	st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:orange;font-size:11pt;'> The value of {SDS_NAME} at this pixel is <mark style="background-color:powderblue">{round(data[x,y]*scale_factor,3)}</mark> (No Value) </h1>""",unsafe_allow_html=True)
+        	#st.write('The value of ', SDS_NAME,'at this pixel is ',round(data[x,y]*scale_factor,3))
         	AOD500nm=round(data[x,y]*scale_factor,3)
 
     ### User Inputs
