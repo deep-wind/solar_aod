@@ -110,11 +110,11 @@ if st.button("Predict"):
     x,y=np.unravel_index(d.argmin(),d.shape)
     print('\nThe nearest pixel to your entered location is at: \nLatitude:',latitude[x,y],' Longitude:',longitude[x,y])
     if data[x,y]==fillvalue:
-        	st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:orange;font-size:11pt;'> The value of {SDS_NAME} at this pixel is <mark style="background-color:powderblue">{fillvalue}</mark> (No Value) </h1>""",unsafe_allow_html=True)
+        	st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:orange;font-size:11pt;'> The value of {SDS_NAME} at this pixel is <mark style="background-color:white">{fillvalue}</mark> (No Value) </h1>""",unsafe_allow_html=True)
         	#st.write('The value of ',SDS_NAME,'at this pixel is',fillvalue,',(No Value)\n')
         	AOD500nm=fillvalue
     else:
-        	st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:orange;font-size:11pt;'> The value of {SDS_NAME} at this pixel is <mark style="background-color:powderblue">{round(data[x,y]*scale_factor,3)}</mark> </h1>""",unsafe_allow_html=True)
+        	st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:orange;font-size:11pt;'> The value of {SDS_NAME} at this pixel is <mark style="background-color:white">{round(data[x,y]*scale_factor,3)}</mark> </h1>""",unsafe_allow_html=True)
         	#st.write('The value of ', SDS_NAME,'at this pixel is ',round(data[x,y]*scale_factor,3))
         	AOD500nm=round(data[x,y]*scale_factor,3)
 
@@ -292,12 +292,12 @@ if st.button("Predict"):
     print(min_index)
     
     solar_irradiance=ds['Dif Hz'].mean()
-    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:lightgreen;font-size:11pt;'>OUTPUT OF LIGHT ENERGY FROM THE SUN : <mark style="background-color:powderblue"> {format(round(solar_irradiance,2))} W/m2 </mark> </h1>""",unsafe_allow_html=True)
+    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:lightgreen;font-size:11pt;'>OUTPUT OF LIGHT ENERGY FROM THE SUN : <mark style="background-color:white"> {format(round(solar_irradiance,2))} W/m2 </mark> </h1>""",unsafe_allow_html=True)
     #st.success("OUTPUT OF LIGHT ENERGY FROM THE SUN {} W/m2".format(round(solar_irradiance,2)))
 	#1 Unit “kilowatt-hour (kWh)” Cost:₹9
     st.write("1 Unit Cost:₹9")
-    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:yellow;font-size:11pt;'>Electricity Cost per Day: ₹ <mark style="background-color:powderblue">{format(round((solar_irradiance*9*24)/1000,2))} </mark> </h1>""",unsafe_allow_html=True)
+    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:yellow;font-size:11pt;'>Electricity Cost per Day: ₹ <mark style="background-color:white">{format(round((solar_irradiance*9*24)/1000,2))} </mark> </h1>""",unsafe_allow_html=True)
     #st.warning("Electricity Cost per Day: ₹ {}".format(round((solar_irradiance*9*24)/1000,2)))
-    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:lightblue;font-size:11pt;'>Electricity Cost per Month: ₹ <mark style="background-color:powderblue">{format(round((solar_irradiance*9*720)/1000,2))}</mark> </h1>""",unsafe_allow_html=True)
+    st.markdown(f"""<h1 style='text-align: left; font-weight:bold;color:black;background-color:blue;font-size:11pt;'>Electricity Cost per Month: ₹ <mark style="background-color:white">{format(round((solar_irradiance*9*720)/1000,2))}</mark> </h1>""",unsafe_allow_html=True)
     #st.info("Electricity Cost per Month: ₹ {}".format(round((solar_irradiance*9*720)/1000,2)))
 	
