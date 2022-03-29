@@ -51,7 +51,7 @@ def set_png_as_page_bg(png_file):
 
 set_png_as_page_bg('solar3.gif')
   
-st.markdown("<h1 style ='color:peach; text_align:center;font-family:times new roman;font-weight: bold;font-size:20pt;'>Impact of Aerosols in Solar Power Generation </h1>", unsafe_allow_html=True)  
+st.markdown("<h1 style ='color:dark blue; text_align:center;font-family:times new roman;font-weight: bold;font-size:20pt;'>Impact of Aerosols in Solar Power Generation </h1>", unsafe_allow_html=True)  
 
 file_name="MYD04_L2.A2022051.0000.061.2022051163849.hdf"
 hdf=SD.SD(file_name)
